@@ -17,7 +17,7 @@ public class OAuth {
 		this.senha = senha;
 	}
 
-	public int verify(String regex, String senha) {
+	private int verify(String regex, String senha) {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(senha);
 		int count = 0;
@@ -42,33 +42,38 @@ public class OAuth {
 			System.out.println(this.mensagem);
 	}
 
-	private void validateCharacterLength() {
+	public int validateCharacterLength() {
 		int value = verify(LENGTH, senha);
 		if (value < 6)
 			this.mensagem.append("Senha deve ter no mínimo 6 caracteres.\n");
+		return value;
 	}
 
-	private void validateDigit() {
+	public int validateDigit() {
 		int value = verify(DIGIT, senha);
 		if (value == 0)
 			this.mensagem.append("A senha deve conter no mínimo 1 digito.\n");
+		return value;
 	}
 
-	private void validateLowercase() {
+	public int validateLowercase() {
 		int value = verify(LOWERCASE, senha);
 		if (value == 0)
 			this.mensagem.append("A senha deve conter no mínimo 1 letra em minúsculo.\n");
+		return value;
 	}
 
-	private void validateUppercase() {
+	public int validateUppercase() {
 		int value = verify(UPPERCASE, senha);
 		if (value == 0)
 			this.mensagem.append("A senha deve conter no mínimo 1 letra em maiúsculo.\n");
+		return value;
 	}
 
-	private void validateCharacter() {
+	public int validateCharacter() {
 		int value = verify(CHARACTER, senha);
 		if (value == 0)
 			this.mensagem.append("A senha deve conter no mínimo 1 caractere especial: !@#$%^&*()-+\n");
+		return value;
 	}
 }
