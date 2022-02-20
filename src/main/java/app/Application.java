@@ -13,7 +13,7 @@ public class Application {
 		Escada escada = new Escada(6);
 		escada.gerarEscada();
 
-		OAuth oAuth = new OAuth("Ya3aab");
+		OAuth oAuth = new OAuth("Ya3&aab");
 		oAuth.validate();
 
 //		Anagrama anagrama = new Anagrama();

@@ -17,6 +17,10 @@ public class OAuth {
 		this.senha = senha;
 	}
 
+	public StringBuilder getMensagem() {
+		return mensagem;
+	}
+
 	private int verify(String regex, String senha) {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(senha);

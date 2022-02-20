@@ -3,6 +3,9 @@ package models;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -56,4 +59,81 @@ public class OAuthTest {
 		assertEquals(expected, matches);
 	}
 
+	@Test
+	public final void deveVerificarMensagemDeErroParaDigitos() {
+		ByteArrayOutputStream outFake = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outFake));
+
+		OAuth password = new OAuth("Ya&faab");
+		password.validate();
+
+		String messageExpected = "A senha deve conter no mínimo 1 digito.\n";
+
+		assertEquals(messageExpected, password.getMensagem().toString());
+	}
+
+	@Test
+	public final void deveVerificarMensagemDeErroParaTamanhoDaSenha() {
+		ByteArrayOutputStream outFake = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outFake));
+
+		OAuth password = new OAuth("Ya3&a");
+		password.validate();
+
+		String messageExpected = "Senha deve ter no mínimo 6 caracteres.\n";
+
+		assertEquals(messageExpected, password.getMensagem().toString());
+	}
+
+	@Test
+	public final void deveVerificarMensagemDeErroParaMinusculo() {
+		ByteArrayOutputStream outFake = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outFake));
+
+		OAuth password = new OAuth("Y3&B2IO");
+		password.validate();
+
+		String messageExpected = "A senha deve conter no mínimo 1 letra em minúsculo.\n";
+
+		assertEquals(messageExpected, password.getMensagem().toString());
+	}
+
+	@Test
+	public final void deveVerificarMensagemDeErroParaMaiusculo() {
+		ByteArrayOutputStream outFake = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outFake));
+
+		OAuth password = new OAuth("a3&aaba");
+		password.validate();
+
+		String messageExpected = "A senha deve conter no mínimo 1 letra em maiúsculo.\n";
+
+		assertEquals(messageExpected, password.getMensagem().toString());
+	}
+
+	@Test
+	public final void deveVerificarMensagemDeErroParaCaracterEspecial() {
+		ByteArrayOutputStream outFake = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outFake));
+
+		OAuth password = new OAuth("Ya3aabc");
+		password.validate();
+
+		String messageExpected = "A senha deve conter no mínimo 1 caractere especial: !@#$%^&*()-+\n";
+
+		assertEquals(messageExpected, password.getMensagem().toString());
+	}
+
+	@Test
+	public final void deveVerificarMensagemDeSenhaCadastradaComSucesso() {
+		ByteArrayOutputStream outFake = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outFake));
+
+		OAuth password = new OAuth("Ya3&aab");
+		password.validate();
+
+		String messageExpected = "";
+
+		assertEquals(messageExpected, password.getMensagem().toString());
+	}
 }
