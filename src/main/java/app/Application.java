@@ -1,11 +1,10 @@
 package app;
 
-import models.Anagrama;
 import models.Escada;
 import models.OAuth;
 
 /**
- * @author Marcelo Motta
+ * @author Marcelo Mottas
  *
  */
 public class Application {
@@ -17,9 +16,8 @@ public class Application {
 		OAuth oAuth = new OAuth("Ya3&aab");
 		oAuth.validate();
 
-		Anagrama anagrama = new Anagrama();
-		anagrama.gerarSubStrings("ifailuhkqq");
+//		Anagrama anagrama = new Anagrama();
+//		anagrama.gerarSubStrings("ifailuhkqq");
 
 	}
-
 }

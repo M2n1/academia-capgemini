@@ -15,6 +15,7 @@ public class Escada {
 		for (int i = 1; i <= degraus; i++) {
 			int espaco = degraus - i;
 			escada.append(" ".repeat(espaco) + "*".repeat(i) + "\n");
+
 		}
 		System.out.print(escada);
 	}
