@@ -9,9 +9,9 @@ public class AnagramaTest {
 	@Test
 	public void deveRetornarNumeroAnagramas() {
 		Anagrama anagrama = new Anagrama();
-		anagrama.gerarSubStrings("ifailuhkqq");
+		anagrama.gerarSubStrings("ovo");
 		int anagramas = anagrama.getContadorAnagramas();
-		int expected = 3;
+		int expected = 2;
 
 		assertEquals(expected, anagramas);
 	}
