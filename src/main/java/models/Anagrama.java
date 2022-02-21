@@ -9,19 +9,21 @@ public class Anagrama {
 	static List<String> lista1 = new ArrayList<String>();
 	int contadorAnagramas = 0;
 
+	public int getContadorAnagramas() {
+		return contadorAnagramas;
+	}
+
 	public void gerarSubStrings(String palavra) {
 		String sub1;
 
 		for (int i = 0; i < palavra.length(); i++) {
 			for (int j = 0; j < palavra.length(); j++) {
-				int limite = (palavra.length() - j);
-				if (i < limite) {
-					sub1 = palavra.substring(i, limite);
+				if (i < (palavra.length() - j)) {
+					sub1 = palavra.substring(i, (palavra.length() - j));
 					lista1.add(sub1);
 				}
 			}
 		}
-		System.out.println(lista1);
 		organizarSubstrings();
 	}
 
@@ -51,7 +53,6 @@ public class Anagrama {
 			String str1 = new String(char1);
 			String str2 = new String(char2);
 			if (!(str1.contains(" ") || str2.contains(" ")) && str1.equalsIgnoreCase(str2)) {
-				System.out.println("[" + str1 + " " + str2 + "]");
 				return true;
 			}
 		}

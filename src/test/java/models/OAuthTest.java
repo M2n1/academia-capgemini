@@ -11,7 +11,6 @@ import org.junit.Test;
 
 public class OAuthTest {
 
-	private static final String LINE_SEPARTOR = System.lineSeparator();
 	private OAuth oAuth;
 
 	@Before
